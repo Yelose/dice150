@@ -1,0 +1,50 @@
+@media only screen and (max-width: 700px) {
+  main {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  main section {
+    width: 100vw;
+    height: 43.5vh;
+    padding: calc(1.5vw + 0.5vh);
+  }
+
+  .actions-container {
+    display: none;
+  }
+
+  .actions-container-mobile {
+    background-color: hsl(100deg, 100%, 85%);
+    display: flex;
+    width: 100%;
+    height: calc(100vh - (3.5vw + 3.5vh) - 87vh);
+    position: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .actions-container-mobile button {
+    padding: 1vh 2vw;
+    color: black;
+    background-color: hsl(0deg, 0%, 70%);
+    margin: 0 2px;
+  }
+}
+.roll-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(5vw + 3vh);
+  height: calc(5vw + 3vh);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px gray;
+}
+.roll-number p {
+  font-size: calc(2vw + 2vh);
+  font-weight: bold;
+  color: hsl(0deg, 0%, 15%);
+}
+
+/*# sourceMappingURL=mobile.css.map */

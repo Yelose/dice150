@@ -1,0 +1,12 @@
+{
+  "name": "dices150",
+  "version": "1.0.0",
+  "description": "Dices game, get points up to 150 and you win",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass-watch": "sass --watch src/sass:public/css"
+  },
+  "author": "Yelose",
+  "license": "ISC"
+}

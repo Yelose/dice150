@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yelose Dice 150 game</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/mobile.css">
+    <script src="/public/index.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <aside>
+            <img src="https://yelose.github.io/f5exercises/Ejercicio%202%20html%20basico/img/yo-peq.png"
+                alt="Yelose animated picture">
+        </aside>
+        <section>
+            <h2 class="hidden">Yelose Dice 150 Game</h2>
+        </section>
+    </header>
+    <main>
+        <section class="p1-container active">
+            <div  class="mask"></div>
+            <div>
+                <div>
+                    <h3>Player 1</h3>
+                    <h1 class="p1-score">23</h1>
+                </div>
+                <div>
+                    <h5>Current Points</h5>
+                    <h2 class="p1-current">23</h2>
+                </div>
+                <div>
+                    <h5>Posible Rolls</h5>
+                    <div class="p1-rolls player-rolls"></div>
+                    <div class="next-roll-container">
+                        <p>Buy next:</p>
+                        <div class="little-dice"><span class="p1-next-shop-roll"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="actions-container">
+            <button class="btn-new-game">🎮 New Game</button>
+            <div class="roll-number">
+                <p>0</p>
+            </div>
+            <button class="btn-roll-dice">🎲 Roll dice</button>
+            <button class="btn-hold">🗳 Hold</button>
+            <button class="btn-buy">🛒 Buy & Hold</button>
+        </div>
+        <div class="actions-container-mobile">
+            <button class="btn-new-game">New Game</button>
+            <button class="btn-roll-dice">Roll dice</button>
+            <div class="roll-number-mobile">
+                <p>0</p>
+            </div>
+            <button class="btn-hold">Hold</button>
+            <button class="btn-buy">Buy & Hold</button>
+        </div>
+
+        <section class="p2-container">
+            <div  class="mask"></div>
+            <div>
+                <div>
+                    <h3>Player 2</h3>
+                    <h1 class="p2-score">28</h1>
+                </div>
+                <div>
+                    <h5>Current Points</h5>
+                    <h2 class="p2-current">23</h2>
+                </div>
+                <div>
+                    <h5>Posible Rolls</h5>
+                    <div class="p2-rolls player-rolls"></div>
+                    <div class="next-roll-container">
+                        <p>Buy next:</p>
+                        <div class="little-dice"><span class="p2-next-shop-roll"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
