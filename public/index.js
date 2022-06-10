@@ -53,10 +53,9 @@ function addPointsToGlobalScore (){
         p1CurrentScore = 0
         p1CurrentScoreEl.textContent = 0
         if (p1GlobalScore >= 150) {
-            p1GlobalScore += p1CurrentScore
-            scoreP1El.textContent = p1GlobalScore
             window.alert("Player 1 wins")
         } else {
+            makeInvisible(diceEl)
             playersTurn = 2
         }
     } else if (playersTurn == 2) {
@@ -67,10 +66,9 @@ function addPointsToGlobalScore (){
         p2CurrentScore = 0
         p2CurrentScoreEl.textContent = 0
         if (p2GlobalScore >= 150) {
-            p2GlobalScore += p2CurrentScore
-            scoreP2El.textContent = p2GlobalScore
             window.alert("Player 2 wins")
         } else {
+            makeInvisible(diceEl)
             playersTurn = 1
         }
     }
@@ -79,6 +77,7 @@ function addPointsToGlobalScore (){
 
 function rollDice(rolls){
     var randomRoll = rolls[Math.floor(Math.random()*rolls.length)]
+    makeVisible(diceEl)
     return randomRoll
 }
 function printCurrentRollsInHTML (element, array) {
@@ -147,6 +146,7 @@ function buyRoll (){
         p1CurrentScore = 0
         p1CurrentScoreEl.textContent = 0
         p1NextShopRollEl.textContent = p1NextRoll;
+        makeInvisible(diceEl)
     }
     else if (playersTurn == 2 && (p2GlobalScore >= p2NextRoll * 2)){
         p2rolls.push(p2NextRoll);
@@ -161,6 +161,7 @@ function buyRoll (){
         p2CurrentScore = 0
         p2CurrentScoreEl.textContent = 0
         p2NextShopRollEl.textContent = p2NextRoll;
+        makeInvisible(diceEl)
     }
 }
 function newGame(){

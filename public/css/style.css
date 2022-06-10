@@ -1,4 +1,4 @@
-@import url(/public/css/font.css);
+@import url(public/css/font.css);
 * {
   margin: 0;
   padding: 0;
@@ -23,6 +23,31 @@ header section {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+header .languages {
+  flex-basis: 20%;
+}
+header .languages div h6 {
+  background-color: white;
+  margin: 1vh 1.5vw;
+  padding: 0.5vh 1vw;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px green;
+  transition: all 200ms;
+}
+header .languages div h6:hover {
+  background-color: hsl(100deg, 90%, 20%);
+  box-shadow: 1px 1px 4px darkgreen;
+  cursor: pointer;
+  color: white;
+  transition: all 200ms;
+}
+header .languages div h6:active {
+  background-color: hsl(100deg, 85%, 10%);
+  box-shadow: inset 1px 1px 4px hsl(120deg, 100%, 50%);
+  cursor: none;
+  color: white;
+  transition: all 200ms;
 }
 
 main {
@@ -58,6 +83,7 @@ main section div {
 
 .active .mask {
   display: none;
+  transition: 1s;
 }
 
 .mask {
@@ -68,6 +94,7 @@ main section div {
   width: 100%;
   height: 100%;
   z-index: 8;
+  transition: 1s;
 }
 
 .actions-container {
@@ -102,6 +129,15 @@ button:hover {
   color: white;
   transition: all 200ms;
   box-shadow: 1px 2px 2px hsl(0deg, 0%, 30%);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgb(100, 100, 100);
+  color: white;
+  transition: all 200ms;
+  box-shadow: inset 1px 2px 2px hsl(0deg, 0%, 30%);
+  cursor: none;
 }
 
 .roll-number {
