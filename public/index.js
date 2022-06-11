@@ -10,11 +10,15 @@ const diceEl = document.querySelector(".roll-number");
 const diceNumberEl = document.querySelector(".roll-number p");
 const p1NextShopRollEl = document.querySelector(".p1-next-shop-roll");
 const p2NextShopRollEl = document.querySelector(".p2-next-shop-roll");
+const p1NextPriceEl = document.querySelector(".p1-next-price");
+const p2NextPriceEl = document.querySelector(".p2-next-price");
+const helpTextEl = document.querySelector(".instructions");
 
 const newGameButton = document.querySelector(".btn-new-game");
 const rollDiceButton = document.querySelector(".btn-roll-dice");
 const holdButton = document.querySelector(".btn-hold");
 const buyAndHoldButton = document.querySelector(".btn-buy");
+const helpButton = document.getElementById("btn-help");
 
 scoreP1El.textContent = "0";
 scoreP2El.textContent = "0";
@@ -33,6 +37,23 @@ function seeActivePlayer (element) {
 function hideUnactivePlayer (element) {
     element.classList.remove("active")
 }
+
+function showElement(element){
+    element.classList.remove("d-none")
+}
+function hideElement(element){
+    element.classList.add("d-none")
+}
+function showInstructions(){
+    showElement(helpTextEl)
+}
+function hideInstructions(){
+    hideElement(helpTextEl)
+}
+
+helpButton.addEventListener("click", showInstructions)
+helpTextEl.addEventListener("click", hideInstructions)
+
 let p1rolls = [1,1,2,3,4]
 let p2rolls = [1,1,2,3,4]
 let p1GlobalScore = 0;
@@ -41,11 +62,26 @@ let p1CurrentScore = 0;
 let p2CurrentScore = 0;
 let p1NextRoll = p1rolls.length;
 let p2NextRoll = p2rolls.length;
+let p1NextRollPrice
+let p2NextRollPrice
+
+function setPlayerNextRollPrice (player, nextRoll){
+    if (player == 1){
+        p1NextRollPrice = p1NextRoll*2 -6;
+        p1NextShopRollEl.textContent = p1NextRoll;
+    }
+    else if (player == 2){
+        p2NextRollPrice = p2NextRoll*2 -6;
+        p2NextShopRollEl.textContent = p2NextRoll;
+    }
+}
+setPlayerNextRollPrice (1, p1NextRoll)
+setPlayerNextRollPrice (2, p2NextRoll)
 
 holdButton.addEventListener("click", addPointsToGlobalScore);
 
 function addPointsToGlobalScore (){
-    if (playersTurn == 1){
+    if (playersTurn == 1 && p1CurrentScore !=0){
         p1GlobalScore += p1CurrentScore
         seeActivePlayer(p2ContainerEl)
         hideUnactivePlayer(p1ContainerEl)
@@ -58,7 +94,7 @@ function addPointsToGlobalScore (){
             makeInvisible(diceEl)
             playersTurn = 2
         }
-    } else if (playersTurn == 2) {
+    } else if (playersTurn == 2 && p2CurrentScore !=0) {
         p2GlobalScore += p2CurrentScore
         seeActivePlayer(p1ContainerEl)
         hideUnactivePlayer(p2ContainerEl)
@@ -130,40 +166,49 @@ function rollDiceClick () {
 } 
 p1NextShopRollEl.textContent = p1NextRoll
 p2NextShopRollEl.textContent = p2NextRoll
+p1NextPriceEl.textContent = `for ${p1NextRollPrice} points`
+p2NextPriceEl.textContent = `for ${p2NextRollPrice} points`
+
+function printNextRollPrice (price, element){
+    element.textContent = `for ${price} points`
+}
 
 buyAndHoldButton.addEventListener("click", buyRoll)
 function buyRoll (){
-    if (playersTurn == 1 && (p1GlobalScore >= p1NextRoll * 2)){
+    if (playersTurn == 1 && (p1GlobalScore >= p1NextRollPrice)){
         p1rolls.push(p1NextRoll);
         rollsP1El.innerHTML = ""
         printCurrentRollsInHTML (rollsP1El, p1rolls);
-        p1GlobalScore -= p1NextRoll*2;
+        p1GlobalScore -= p1NextRollPrice;
         playersTurn = 2
         scoreP1El.innerHTML = p1GlobalScore;
         seeActivePlayer(p2ContainerEl)
         hideUnactivePlayer(p1ContainerEl)
         p1NextRoll = p1rolls.length
+        setPlayerNextRollPrice (1, p1NextRoll);
+        printNextRollPrice (p1NextRollPrice, p1NextPriceEl);
         p1CurrentScore = 0
         p1CurrentScoreEl.textContent = 0
-        p1NextShopRollEl.textContent = p1NextRoll;
         makeInvisible(diceEl)
     }
-    else if (playersTurn == 2 && (p2GlobalScore >= p2NextRoll * 2)){
+    else if (playersTurn == 2 && (p2GlobalScore >= p2NextRollPrice)){
         p2rolls.push(p2NextRoll);
         rollsP2El.innerHTML = ""
         printCurrentRollsInHTML (rollsP2El, p2rolls);
-        p2GlobalScore -= p2NextRoll*2;
+        p2GlobalScore -= p2NextRollPrice;
         playersTurn = 1
         scoreP2El.innerHTML = p2GlobalScore;
         seeActivePlayer(p1ContainerEl)
         hideUnactivePlayer(p2ContainerEl)
         p2NextRoll = p2rolls.length
-        p2CurrentScore = 0
-        p2CurrentScoreEl.textContent = 0
-        p2NextShopRollEl.textContent = p2NextRoll;
+        setPlayerNextRollPrice (2, p2NextRoll);
+        printNextRollPrice (p2NextRollPrice, p2NextPriceEl);
+        p2CurrentScore = 0;
+        p2CurrentScoreEl.textContent = 0;
         makeInvisible(diceEl)
     }
 }
+
 function newGame(){
     playersTurn = 1
     rollsP1El.textContent = ""
@@ -187,5 +232,9 @@ function newGame(){
     p2CurrentScoreEl.textContent = "0";
     p1NextShopRollEl.textContent = p1NextRoll;
     p2NextShopRollEl.textContent = p2NextRoll;
+    setPlayerNextRollPrice (1, p1NextRoll);
+    setPlayerNextRollPrice (2, p2NextRoll);
+    printNextRollPrice (p1NextRollPrice, p1NextPriceEl);
+    printNextRollPrice (p2NextRollPrice, p2NextPriceEl);
 }
 newGameButton.addEventListener("click", newGame)

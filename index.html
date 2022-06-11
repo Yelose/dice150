@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yelose Dice 150 game</title>
+    <link rel="stylesheet" href="public/css/font.css">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/mobile.css">
     <script src="public/index.js" defer></script>
@@ -47,6 +48,7 @@
                     <div class="next-roll-container">
                         <p>Buy next:</p>
                         <div class="little-dice"><span class="p1-next-shop-roll"></span></div>
+                        <p class="p1-next-price"></p>
                     </div>
                 </div>
             </div>
@@ -59,6 +61,8 @@
             <button class="btn-roll-dice">🎲 Roll dice</button>
             <button class="btn-hold">🗳 Hold</button>
             <button class="btn-buy">🛒 Buy & Hold</button>
+            <button id="btn-help">💡 Help</button>
+
         </div>
         <div class="actions-container-mobile">
             <button class="btn-new-game">New Game</button>
@@ -87,11 +91,46 @@
                     <div class="next-roll-container">
                         <p>Buy next:</p>
                         <div class="little-dice"><span class="p2-next-shop-roll"></span></div>
+                        <p class="p2-next-price"></p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <footer class="instructions d-none">
+        <h5>INSTRUCTIONS</h5>
+        <h6>Win the game</h6>
+        <ul>
+            <li>Player that gets 150 points wins the game.</li>
+        </ul>
+        <h6>Turns</h6>
+        <ul>
+            <li>Roll the dice</li>
+            <ul>
+                <li>You can 🎲 Roll dice as many times as you want.</li>
+                <li>Every time you roll a dice, you get Current Points</li>
+                <li>If you roll a 1, you lose your Current Points and your turn</li>
+            </ul>
+            <li>Hold points</li>
+            <ul>
+                <li>If you press 🗳 Hold, your current points are added to your main Score</li>
+                <li>You lose your turn</li>
+            </ul>
+            <li>Buying another dice</li>
+            <ul>
+                <li>You can 🛒 buy another dice in your turn</li>
+                <li>If you decide to buy a dice, you lose your Current Points and your turn</li>
+                <li>Every dice cost points, from main Score</li>
+            </ul>
+        </ul>
+        <h6>Close Help Window</h6>
+        <ul>
+            <ul>
+                <li>Just click anywhere inside this window</li>
+            </ul>
+        </ul>
+
+    </footer>
 </body>
 
 </html>
