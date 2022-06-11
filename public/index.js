@@ -89,6 +89,9 @@ function addPointsToGlobalScore (){
         p1CurrentScore = 0
         p1CurrentScoreEl.textContent = 0
         if (p1GlobalScore >= 150) {
+            makeInvisible(rollDiceButton)
+            makeInvisible(holdButton)
+            makeInvisible(buyAndHoldButton)
             window.alert("Player 1 wins")
         } else {
             makeInvisible(diceEl)
@@ -103,6 +106,9 @@ function addPointsToGlobalScore (){
         p2CurrentScoreEl.textContent = 0
         if (p2GlobalScore >= 150) {
             window.alert("Player 2 wins")
+            makeInvisible(rollDiceButton)
+            makeInvisible(holdButton)
+            makeInvisible(buyAndHoldButton)
         } else {
             makeInvisible(diceEl)
             playersTurn = 1
@@ -236,5 +242,9 @@ function newGame(){
     setPlayerNextRollPrice (2, p2NextRoll);
     printNextRollPrice (p1NextRollPrice, p1NextPriceEl);
     printNextRollPrice (p2NextRollPrice, p2NextPriceEl);
-}
+    makeVisible(rollDiceButton)
+    makeVisible(holdButton)
+    makeVisible(buyAndHoldButton)
+
+  }
 newGameButton.addEventListener("click", newGame)
