@@ -92,6 +92,8 @@ function addPointsToGlobalScore (){
             makeInvisible(rollDiceButton)
             makeInvisible(holdButton)
             makeInvisible(buyAndHoldButton)
+            seeActivePlayer(p1ContainerEl)
+            seeActivePlayer(p2ContainerEl)
             window.alert("Player 1 wins")
         } else {
             makeInvisible(diceEl)
@@ -109,6 +111,8 @@ function addPointsToGlobalScore (){
             makeInvisible(rollDiceButton)
             makeInvisible(holdButton)
             makeInvisible(buyAndHoldButton)
+            seeActivePlayer(p1ContainerEl)
+            seeActivePlayer(p2ContainerEl)
         } else {
             makeInvisible(diceEl)
             playersTurn = 1
@@ -245,6 +249,5 @@ function newGame(){
     makeVisible(rollDiceButton)
     makeVisible(holdButton)
     makeVisible(buyAndHoldButton)
-
   }
 newGameButton.addEventListener("click", newGame)

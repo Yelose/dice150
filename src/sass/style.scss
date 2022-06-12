@@ -225,10 +225,13 @@ footer {
     z-index: 100;
     width: 50vw;
     background-color: white;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     padding: 1vw;
     border-radius: 1vw;
     box-shadow: 2px 2px 3px black, -1px -1px 3px gray;
+    max-height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
     cursor: pointer;
     h5{
         padding: 1vw;
