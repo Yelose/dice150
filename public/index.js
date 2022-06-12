@@ -13,6 +13,17 @@ const p2NextShopRollEl = document.querySelector(".p2-next-shop-roll");
 const p1NextPriceEl = document.querySelector(".p1-next-price");
 const p2NextPriceEl = document.querySelector(".p2-next-price");
 const helpTextEl = document.querySelector(".instructions");
+const victoryWindwoEl = document.getElementById("victory");
+const winnerTextEl = document.getElementById("winner");
+
+const spanishButton = document.getElementById("spanish");
+const englishButton = document.getElementById("english");
+const player1TextEl = document.querySelector(".p1-container>div>div>h3");
+const player2TextEl = document.querySelector(".p2-container>div>div>h3");
+const currentTextEl = document.querySelectorAll(".current-text");
+const posibleRollsTextEl = document.querySelectorAll(".posible-rolls");
+const nextRollTextEl = document.querySelectorAll(".buy-next-text");
+const costTextEl = document.querySelectorAll(".cost-text");
 
 const newGameButton = document.querySelector(".btn-new-game");
 const rollDiceButton = document.querySelector(".btn-roll-dice");
@@ -24,6 +35,103 @@ scoreP1El.textContent = "0";
 scoreP2El.textContent = "0";
 p1CurrentScoreEl.textContent = "0";
 p2CurrentScoreEl.textContent = "0";
+
+
+function translateToSpanish (){
+    player1TextEl.innerHTML = "Jugador 1";
+    player2TextEl.innerHTML = "Jugador 2";
+    currentTextEl.forEach((element) => element.innerHTML = "Puntos Actuales");
+    posibleRollsTextEl.forEach((element) => element.innerHTML = "Tiradas Posibles");
+    nextRollTextEl.forEach((element) => element.innerHTML = "Compra un");
+    costTextEl.forEach((element) => element.innerHTML = "Precio:");
+    newGameButton.innerHTML = "🎮 Nueva Partida";
+    rollDiceButton.innerHTML = "🎲 Tirar el Dado";
+    holdButton.innerHTML = "🗳 Guardar";
+    buyAndHoldButton.innerHTML = "🛒 Comprar";
+    helpButton.innerHTML = "💡 Ayuda";
+    helpTextEl.innerHTML = `        <h5>INSTRUCCIONES</h5>
+    <h6>Ganar el juego</h6>
+    <ul>
+        <li>El jugador que antes llegue a 150 puntos gana.</li>
+    </ul>
+    <h6>Turnos</h6>
+    <ul>
+        <li>Tirar el dado</li>
+        <ul>
+            <li>puedes tirar el dado 🎲 tantas veces como quieras.</li>
+            <licada vez que tiras el dado, sumas puntos actuales</li>
+            <li>Si sacas un 1, pierdes tus Puntos actuales y el turno</li>
+        </ul>
+        <li>Guardar puntos</li>
+        <ul>
+            <li>Cuando pulsas 🗳 Guardar, tus Puntos Actuales se añaden a tu puntuación total</li>
+            <li>Pierdes el turno</li>
+        </ul>
+        <li>Comprar otra tirada</li>
+        <ul>
+            <li>Puedes 🛒 comprar una tirada por turno</li>
+            <li>Si compras una tirada, pierdes tus Puntos Actuales y el turno</li>
+            <li>Comprar una nueva tirada, cuesta puntos globales</li>
+            <li>Incrementa tus posibilidades de no sacar un 1</li>
+        </ul>
+    </ul>
+    <h6>Cerrar esta ventana</h6>
+    <ul>
+        <ul>
+            <li>Haz click en cualquier parte de esta ventana para cerrarla.</li>
+        </ul>
+    </ul>
+`
+}
+function translateToEnglish (){
+    player1TextEl.innerHTML = "Player 1";
+    player2TextEl.innerHTML = "Player 2";
+    currentTextEl.forEach((element) => element.innerHTML = "Current Points");
+    posibleRollsTextEl.forEach((element) => element.innerHTML = "Posible Rolls");
+    nextRollTextEl.forEach((element) => element.innerHTML = "Buy next");
+    costTextEl.forEach((element) => element.innerHTML = "Cost:");
+    newGameButton.innerHTML = "🎮 New Game"
+    rollDiceButton.innerHTML = "🎲 Roll dice";
+    holdButton.innerHTML = "🗳 Hold";
+    buyAndHoldButton.innerHTML = "🛒 Buy Roll";
+    helpButton.innerHTML = "💡 Help";
+    helpTextEl.innerHTML = `<h5>INSTRUCTIONS</h5>
+    <h6>Win the game</h6>
+    <ul>
+        <li>Player that gets 150 points wins the game.</li>
+    </ul>
+    <h6>Turns</h6>
+    <ul>
+        <li>Roll the dice</li>
+        <ul>
+            <li>You can 🎲 Roll dice as many times as you want.</li>
+            <li>Every time you roll a dice, you get Current Points</li>
+            <li>If you roll a 1, you lose your Current Points and your turn</li>
+        </ul>
+        <li>Hold points</li>
+        <ul>
+            <li>If you press 🗳 Hold, your current points are added to your main Score</li>
+            <li>You lose your turn</li>
+        </ul>
+        <li>Buying another dice</li>
+        <ul>
+            <li>You can 🛒 buy another dice in your turn</li>
+            <li>If you decide to buy a dice, you lose your Current Points and your turn</li>
+            <li>Buying a new dice, costs global score points</li>
+            <li>Increase your chances of rolling something different to 1</li>
+        </ul>
+    </ul>
+    <h6>Close Help Window</h6>
+    <ul>
+        <ul>
+            <li>Just click anywhere inside this window</li>
+        </ul>
+    </ul>
+`
+}
+
+spanishButton.addEventListener("click", translateToSpanish)
+englishButton.addEventListener("click", translateToEnglish)
 
 function makeInvisible (element){
     element.style.visibility = "hidden"
@@ -80,6 +188,15 @@ setPlayerNextRollPrice (2, p2NextRoll)
 
 holdButton.addEventListener("click", addPointsToGlobalScore);
 
+victoryWindwoEl.addEventListener("click", hideVictoryWindow);
+function hideVictoryWindow (){
+    hideElement(victoryWindwoEl)
+}
+function victory(player) {
+    winnerTextEl.innerHTML = `Player ${player}`
+    showElement(victoryWindwoEl)
+}
+hideElement(victoryWindwoEl)
 function addPointsToGlobalScore (){
     if (playersTurn == 1 && p1CurrentScore !=0){
         p1GlobalScore += p1CurrentScore
@@ -92,9 +209,10 @@ function addPointsToGlobalScore (){
             makeInvisible(rollDiceButton)
             makeInvisible(holdButton)
             makeInvisible(buyAndHoldButton)
+            makeInvisible(diceEl)
             seeActivePlayer(p1ContainerEl)
             seeActivePlayer(p2ContainerEl)
-            window.alert("Player 1 wins")
+            victory(1)
         } else {
             makeInvisible(diceEl)
             playersTurn = 2
@@ -107,12 +225,13 @@ function addPointsToGlobalScore (){
         p2CurrentScore = 0
         p2CurrentScoreEl.textContent = 0
         if (p2GlobalScore >= 150) {
-            window.alert("Player 2 wins")
             makeInvisible(rollDiceButton)
             makeInvisible(holdButton)
             makeInvisible(buyAndHoldButton)
+            makeInvisible(diceEl)
             seeActivePlayer(p1ContainerEl)
             seeActivePlayer(p2ContainerEl)
+            victory(2)
         } else {
             makeInvisible(diceEl)
             playersTurn = 1
@@ -176,11 +295,11 @@ function rollDiceClick () {
 } 
 p1NextShopRollEl.textContent = p1NextRoll
 p2NextShopRollEl.textContent = p2NextRoll
-p1NextPriceEl.textContent = `for ${p1NextRollPrice} points`
-p2NextPriceEl.textContent = `for ${p2NextRollPrice} points`
+p1NextPriceEl.textContent = ` ${p1NextRollPrice}`
+p2NextPriceEl.textContent = ` ${p2NextRollPrice}`
 
 function printNextRollPrice (price, element){
-    element.textContent = `for ${price} points`
+    element.textContent = ` ${price}`
 }
 
 buyAndHoldButton.addEventListener("click", buyRoll)
@@ -249,5 +368,6 @@ function newGame(){
     makeVisible(rollDiceButton)
     makeVisible(holdButton)
     makeVisible(buyAndHoldButton)
+    hideElement(victoryWindwoEl)
   }
 newGameButton.addEventListener("click", newGame)

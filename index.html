@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yelose Dice 150 game</title>
-    <link rel="stylesheet" href="public/css/font.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="public/css/font.css">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/mobile.css">
     <script src="public/index.js" defer></script>
@@ -23,10 +26,10 @@
         </section>
         <section class="languages">
             <div>
-                <h6>EN</h6>
+                <h6 id="english">EN</h6>
             </div>
             <div>
-                <h6>ES</h6>
+                <h6 id="spanish">ES</h6>
             </div>
         </section>
     </header>
@@ -39,16 +42,22 @@
                     <h1 class="p1-score">23</h1>
                 </div>
                 <div>
-                    <h5>Current Points</h5>
+                    <h5 class="current-text">Current Points</h5>
                     <h2 class="p1-current">23</h2>
                 </div>
                 <div>
-                    <h5>Posible Rolls</h5>
+                    <h5 class="posible-rolls">Posible Rolls</h5>
                     <div class="p1-rolls player-rolls"></div>
                     <div class="next-roll-container">
-                        <p>Buy next:</p>
-                        <div class="little-dice"><span class="p1-next-shop-roll"></span></div>
-                        <p class="p1-next-price"></p>
+                        <div>
+                            <p class="buy-next-text">Buy next:</p>
+                            <div class="little-dice"><span class="p1-next-shop-roll"></span></div>
+                        </div>
+                        <div>
+                            <p>🤑</p>
+                            <p class="cost-text"> Cost:</p>
+                            <p class="p1-next-price"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,20 +69,10 @@
             </div>
             <button class="btn-roll-dice">🎲 Roll dice</button>
             <button class="btn-hold">🗳 Hold</button>
-            <button class="btn-buy">🛒 Buy & Hold</button>
+            <button class="btn-buy">🛒 Buy Roll</button>
             <button id="btn-help">💡 Help</button>
 
         </div>
-        <div class="actions-container-mobile">
-            <button class="btn-new-game">New Game</button>
-            <button class="btn-roll-dice">Roll dice</button>
-            <div class="roll-number-mobile">
-                <p>0</p>
-            </div>
-            <button class="btn-hold">Hold</button>
-            <button class="btn-buy">Buy & Hold</button>
-        </div>
-
         <section class="p2-container">
             <div  class="mask"></div>
             <div>
@@ -82,21 +81,33 @@
                     <h1 class="p2-score">28</h1>
                 </div>
                 <div>
-                    <h5>Current Points</h5>
+                    <h5 class="current-text">Current Points</h5>
                     <h2 class="p2-current">23</h2>
                 </div>
                 <div>
-                    <h5>Posible Rolls</h5>
+                    <h5 class="posible-rolls">Posible Rolls</h5>
                     <div class="p2-rolls player-rolls"></div>
                     <div class="next-roll-container">
-                        <p>Buy next:</p>
-                        <div class="little-dice"><span class="p2-next-shop-roll"></span></div>
-                        <p class="p2-next-price"></p>
+                        <div>
+                            <p class="buy-next-text">Buy next:</p>
+                            <div class="little-dice"><span class="p2-next-shop-roll"></span></div>
+                        </div>
+                        <div>
+                            <p>🤑</p>
+                            <p class="cost-text"> Cost: </p> 
+                            <p class="p2-next-price"></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <div id="victory">
+        <div>
+            <h1 id="winner">Player</h1>
+            <h2>WINS</h2>
+        </div>
+    </div>
     <footer class="instructions d-none">
         <h5>INSTRUCTIONS</h5>
         <h6>Win the game</h6>
