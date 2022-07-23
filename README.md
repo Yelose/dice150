@@ -1,14 +1,18 @@
 # dice150
 
-SASS INSTALLATION
-npm install -g sass
+### SASS INSTALLATION
 
-RUNNING SASS
-npm run sass-watch
+* npm install -g sass
 
-FONTS
-font-family: 'Odibee Sans', cursive;
-font-family: 'Roboto', sans-serif;
+### RUNNING SASS
+
+* npm run sass-watch
+
+### FONTS
+
+* font-family: 'Odibee Sans', cursive;
+
+* font-family: 'Roboto', sans-serif;
 
 
 [![dice150p2](https://user-images.githubusercontent.com/56456756/180605985-dc9eb21e-5365-45dd-924b-4eeed3f21ab8.png)](https://yelose.github.io/dice150/)
